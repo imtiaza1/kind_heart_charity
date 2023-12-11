@@ -73,6 +73,7 @@ let menu = document.getElementById("menu");
 let img = document.getElementById("img");
 let img2 = document.getElementById("img2");
 
+nav.style.height = "0vh";
 menu.addEventListener("click", function () {
 	if (nav.style.height === "0vh") {
 		nav.style.height = "52vh";
