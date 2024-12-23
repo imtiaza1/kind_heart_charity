@@ -1,7 +1,7 @@
 # ❤️ Kind Heart Charity - Website Clone
 
 ## 📝 Description
-**Kind Heart Charity** is a frontend project created as a clone of an existing charity website. The purpose of this project is to practice and demonstrate frontend development skills using HTML, CSS, and JavaScript. The website is designed to provide information about the charity, allow users to donate, and promote various charitable initiatives.
+**Kind Heart Charity** is a frontend project that I created based on an existing charity website I found online. I recreated it from scratch to practice and demonstrate my frontend development skills using **HTML**, **CSS**, and **JavaScript**. The website is designed to provide information about the charity, allow users to donate, and promote various charitable initiatives.
 
 This project was developed as a personal exercise to learn website design and frontend technologies, inspired by a random charity website.
 
@@ -44,7 +44,7 @@ This project was developed as a personal exercise to learn website design and fr
 ---
 
 ## 🙌 Acknowledgements
-This project was created as part of a learning exercise and is a clone of an existing charity website. No content or design is original to the source.
+This project was created as part of a learning exercise and is a clone of an existing charity website I found online. I recreated it from scratch for educational purposes. The content and design are not original to the source.
 
 ---
 
