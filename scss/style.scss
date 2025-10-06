@@ -1,10 +1,105 @@
 // @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Metrophobic&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Great+Vibes&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
 
+// ============================================
+// VARIABLES
+// ============================================
+
+// Colors
+$primary-color: #5bc0ab;
+$secondary-color: #5a6f80;
+$text-dark: #5a7081;
+$text-light: #696067;
+$text-gray: rgb(118, 117, 117);
+$white: white;
+$light-bg: #f1f1f1;
+$light-blue-bg: #f0f8ff;
+$border-gray: #d4d0d0;
+$progress-gray: #aeb6b4;
+$input-gray: #717275;
+
+// Fonts
+$font-main: "Roboto", sans-serif;
+$font-cursive: "Great Vibes", cursive;
+
+// Font Sizes
+$font-size-xs: 10px;
+$font-size-sm: 13px;
+$font-size-base: 14px;
+$font-size-md: 18px;
+$font-size-lg: 20px;
+$font-size-xl: 24px;
+$font-size-xxl: 26px;
+$font-size-2xl: 30px;
+$font-size-3xl: 42px;
+$font-size-4xl: 46px;
+
+// Font Weights
+$font-light: 300;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+$font-black: 900;
+
+// Spacing
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 3rem;
+$spacing-xl: 5rem;
+
+// Border Radius
+$radius-sm: 20px;
+$radius-md: 50px;
+$radius-lg: 100px;
+
+// Transitions
+$transition-base: 0.3s all;
+$transition-slow: 0.5s ease;
+
+// Shadows
+$shadow-base: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+// Layout
+$container-width: 90%;
+
+// ============================================
+// MIXINS
+// ============================================
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin flex-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+@mixin button-base {
+	border: none;
+	cursor: pointer;
+	transition: $transition-base;
+}
+
+@mixin circle($size) {
+	border-radius: 50%;
+	height: $size;
+	width: $size;
+}
+
+// ============================================
+// BASE STYLES
+// ============================================
+
 * {
 	padding: 0;
 	margin: 0;
-	font-family: "Roboto", sans-serif;
+	font-family: $font-main;
 }
 
 html {
@@ -12,33 +107,37 @@ html {
 	scroll-behavior: smooth;
 }
 
-// Link Header Section
+h2 {
+	font-size: $font-size-3xl;
+	letter-spacing: -2px;
+	font-weight: $font-black;
+	color: $secondary-color;
+}
+
+// ============================================
+// LINK HEADER SECTION
+// ============================================
+
 .link-header {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	background: #5bc0ab;
+	@include flex-between;
+	background: $primary-color;
 }
 
 .link-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	@include flex-between;
 	flex-wrap: wrap;
-	width: 90%;
+	width: $container-width;
 	margin: auto;
-	padding: 1rem 1rem;
+	padding: $spacing-sm;
 	row-gap: 15px;
 }
 
 .link-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	font-size: 14px;
+	@include flex-between;
+	font-size: $font-size-base;
 	letter-spacing: 0.1px;
-	font-weight: 300;
-	color: white;
+	font-weight: $font-light;
+	color: $white;
 	row-gap: 15px;
 
 	p {
@@ -46,7 +145,7 @@ html {
 	}
 
 	a {
-		color: white;
+		color: $white;
 		text-decoration: none;
 	}
 
@@ -60,28 +159,25 @@ html {
 }
 
 .link-mini {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 }
 
-// Header Section
+// ============================================
+// HEADER SECTION
+// ============================================
+
 header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 	position: sticky;
 	top: 0;
-	background: #f1f1f1;
+	background: $light-bg;
 	z-index: 100;
 }
 
 .header-container {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	@include flex-between;
 	flex-wrap: wrap;
-	width: 90%;
+	width: $container-width;
 
 	a {
 		text-decoration: none;
@@ -97,24 +193,25 @@ header {
 	}
 
 	h2 {
-		color: #5bc0ab;
-		font-size: 20px;
-		font-weight: 500;
+		color: $primary-color;
+		font-size: $font-size-lg;
+		font-weight: $font-medium;
 		letter-spacing: 0.3px;
 	}
 
 	p {
-		font-weight: 600;
-		font-size: 10px;
-		color: #5a6f80;
+		font-weight: $font-semibold;
+		font-size: $font-size-xs;
+		color: $secondary-color;
 	}
 }
 
-// Navigation
+// ============================================
+// NAVIGATION
+// ============================================
+
 nav {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 
 	ul {
 		display: flex;
@@ -124,41 +221,44 @@ nav {
 
 		a {
 			text-decoration: none;
-			color: rgb(118, 117, 117);
+			color: $text-gray;
 			padding: 10px 15px;
 			text-transform: capitalize;
 
 			&:hover {
-				color: #5bc0ab;
-				transition: 0.3s all;
+				color: $primary-color;
+				transition: $transition-base;
 			}
 		}
 	}
 
 	.fa-chevron-down {
 		padding-left: 10px;
-		font-size: 13px;
+		font-size: $font-size-sm;
 	}
 }
 
 .nav-btn {
-	background: white;
+	background: $white;
 	padding: 10px 23px;
 	text-transform: capitalize;
-	border-radius: 20px;
-	transition: 0.3s all;
-	border: 2px solid #5a6f80;
+	border-radius: $radius-sm;
+	transition: $transition-base;
+	border: 2px solid $secondary-color;
 	cursor: pointer;
-	color: #5a6f80;
-	font-weight: 600;
+	color: $secondary-color;
+	font-weight: $font-semibold;
 
 	&:hover {
-		background: #5bc0ab;
-		border: 2px solid #5bc0ab;
+		background: $primary-color;
+		border: 2px solid $primary-color;
 	}
 }
 
-// Menu
+// ============================================
+// MENU
+// ============================================
+
 .menu {
 	height: auto;
 	width: auto;
@@ -170,7 +270,7 @@ nav {
 
 	img {
 		position: relative;
-		transition: 0.5s ease;
+		transition: $transition-slow;
 	}
 }
 
@@ -185,7 +285,10 @@ nav {
 	position: absolute;
 }
 
-// Home Section
+// ============================================
+// HOME SECTION
+// ============================================
+
 .home-page {
 	position: relative;
 }
@@ -198,7 +301,7 @@ nav {
 		position: relative;
 		width: 100%;
 		height: 100vh;
-		transition: 0.5s ease;
+		transition: $transition-slow;
 	}
 
 	img {
@@ -208,12 +311,12 @@ nav {
 		background-size: cover;
 		background-position: center;
 		object-fit: cover;
-		transition: 0.5s ease;
+		transition: $transition-slow;
 	}
 }
 
 .slider-left {
-	background: white;
+	background: $white;
 	width: 47%;
 	position: absolute;
 	height: 100%;
@@ -224,11 +327,11 @@ nav {
 	justify-content: end;
 	flex-direction: column;
 	clip-path: polygon(100% 100%, 100% 150px, 0 100%);
-	color: #5a6f80;
+	color: $secondary-color;
 
 	h1 {
 		font-size: 2.5rem;
-		font-weight: 900;
+		font-weight: $font-black;
 	}
 
 	p {
@@ -238,23 +341,21 @@ nav {
 
 .left-btn,
 .right-btn {
-	background: #5a7081;
+	background: $text-dark;
 	border: none;
 	border-radius: 50%;
 	padding: 14px;
 	font-size: 50px;
-	color: white;
+	color: $white;
 	position: absolute;
 	top: 45%;
 	height: 70px;
 	width: 70px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 	cursor: pointer;
 
 	&:hover {
-		background: #5bc0ab;
+		background: $primary-color;
 		transition: 0.4s all;
 	}
 }
@@ -267,38 +368,28 @@ nav {
 	right: 5%;
 }
 
-// About Section
+// ============================================
+// ABOUT SECTION
+// ============================================
+
 .section {
 	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding-top: 3rem;
-	padding-bottom: 3rem;
+	@include flex-center;
+	padding-top: $spacing-lg;
+	padding-bottom: $spacing-lg;
 }
 
 .about-container {
-	width: 90%;
+	width: $container-width;
 }
 
 .about-header {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
-h2 {
-	font-size: 42px;
-	letter-spacing: -2px;
-	font-weight: 900;
-	color: #5a6f80;
+	@include flex-center;
 }
 
 .about-row {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding-top: 5rem;
+	@include flex-between;
+	padding-top: $spacing-xl;
 	flex-wrap: wrap;
 	gap: 30px;
 }
@@ -314,8 +405,8 @@ h2 {
 	text-align: center;
 
 	&:hover {
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-		border-radius: 20px;
+		box-shadow: $shadow-base;
+		border-radius: $radius-sm;
 
 		img {
 			transform: scale(0.75);
@@ -323,34 +414,33 @@ h2 {
 	}
 
 	p {
-		color: #5bc0ab;
-		font-size: 24px;
+		color: $primary-color;
+		font-size: $font-size-xl;
 		margin-top: 20px;
 	}
 
 	b {
-		font-weight: 700;
+		font-weight: $font-bold;
 	}
 
 	a {
 		text-decoration: none;
-		display: flex;
-		justify-content: center;
-		align-items: center;
+		@include flex-center;
 		flex-direction: column;
 	}
 }
 
-// Story Section
+// ============================================
+// STORY SECTION
+// ============================================
+
 .story {
-	background: #f0f8ff;
+	background: $light-blue-bg;
 }
 
 .story-row {
-	display: flex;
-	justify-content: center;
+	@include flex-center;
 	gap: 30px;
-	align-items: center;
 	width: 76em;
 }
 
@@ -363,57 +453,56 @@ h2 {
 		width: 100%;
 		height: 94vh;
 		object-fit: cover;
-		border-radius: 20px;
+		border-radius: $radius-sm;
 	}
 
 	h5 {
-		font-size: 26px;
-		color: #5bc1ac;
+		font-size: $font-size-xxl;
+		color: $primary-color;
 		padding-top: 10px;
 		padding-bottom: 10px;
 	}
 }
 
 .story-list-mini {
-	border-radius: 20px;
-	background: white;
+	border-radius: $radius-sm;
+	background: $white;
 	padding: 35px;
 
 	p {
-		color: #5a7081;
-		font-size: 18px;
+		color: $text-dark;
+		font-size: $font-size-md;
 		line-height: 24px;
-		font-weight: 300;
+		font-weight: $font-light;
 		font-family: sans-serif;
 	}
 }
 
 .story-list-mini-row {
-	display: flex;
-	justify-content: center;
+	@include flex-center;
 	gap: 30px;
-	padding-top: 1rem;
+	padding-top: $spacing-sm;
 }
 
 .list {
 	width: 50%;
 
 	h2 {
-		color: #5bc0ab;
+		color: $primary-color;
 		letter-spacing: 1px;
 	}
 
 	p {
-		font-size: 20px;
-		color: #5a7081;
-		font-weight: 300;
+		font-size: $font-size-lg;
+		color: $text-dark;
+		font-weight: $font-light;
 		font-family: sans-serif;
 	}
 
 	> li {
 		list-style: none;
 		padding-top: 10px;
-		font-weight: 300;
+		font-weight: $font-light;
 		font-family: sans-serif;
 	}
 
@@ -422,15 +511,14 @@ h2 {
 	}
 
 	.fa-check {
-		background: #d4d0d0;
+		background: $border-gray;
 		border-radius: 50%;
 		padding: 9px;
 	}
 }
 
 .story_row {
-	display: flex;
-	justify-content: center;
+	@include flex-center;
 	gap: 30px;
 }
 
@@ -444,14 +532,14 @@ h2 {
 		height: 63vh;
 		width: 100%;
 		object-fit: cover;
-		border-radius: 20px;
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		border-radius: $radius-sm;
+		box-shadow: $shadow-base;
 	}
 
 	p {
-		color: #696067;
+		color: $text-light;
 		font-size: 17px;
-		font-weight: 300;
+		font-weight: $font-light;
 		padding-bottom: 10px;
 		line-height: 25px;
 		padding-top: 5px;
@@ -464,33 +552,36 @@ h2 {
 
 	li {
 		list-style: none;
-		background-color: #5a6f80;
+		background-color: $secondary-color;
 		border-radius: 50%;
 		margin: 0px 10px;
-		transition: 0.3s all;
+		transition: $transition-base;
 
 		i {
-			color: white;
-			font-size: 20px;
+			color: $white;
+			font-size: $font-size-lg;
 			padding: 10px;
 		}
 
 		&:hover {
-			background: #5bc0ab;
+			background: $primary-color;
 		}
 	}
 }
 
-// Octa Section
+// ============================================
+// OCTA SECTION
+// ============================================
+
 .octa {
 	padding-top: 100px;
 	padding-bottom: 100px;
-	background: #f0f8ff;
+	background: $light-blue-bg;
 	overflow: hidden;
 
 	&::before {
 		content: "";
-		background-color: #5bc0ab;
+		background-color: $primary-color;
 		border-radius: 50%;
 		position: absolute;
 		top: -100px;
@@ -502,7 +593,7 @@ h2 {
 
 	&::after {
 		content: "";
-		border: 20px solid #5a7081;
+		border: 20px solid $text-dark;
 		border-radius: 50%;
 		position: absolute;
 		bottom: -100px;
@@ -515,70 +606,69 @@ h2 {
 }
 
 .octa_container {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+	@include flex-between;
 	width: 63em;
 	flex-wrap: wrap;
 	gap: 30px;
 
 	h1 {
-		font-size: 46px;
+		font-size: $font-size-4xl;
 		letter-spacing: -2px;
-		color: #5a6f80;
-		font-weight: 900;
+		color: $secondary-color;
+		font-weight: $font-black;
 	}
 
 	a {
 		text-decoration: none;
-		color: #5a6f80;
+		color: $secondary-color;
 		padding: 0px 35px;
 	}
 }
 
 .octa_btn {
-	background: #5a6f80;
+	background: $secondary-color;
 	border: 2px solid transparent;
-	border-radius: 100px;
-	color: white;
-	font-size: 18px;
-	font-weight: 400;
+	border-radius: $radius-lg;
+	color: $white;
+	font-size: $font-size-md;
+	font-weight: $font-regular;
 	padding: 15px 25px;
 	letter-spacing: 0.4px;
-	transition: 0.3s all;
+	transition: $transition-base;
 	cursor: pointer;
 
 	&:hover {
-		background: #5bc1ac;
+		background: $primary-color;
 	}
 }
 
-// Cause Section
+// ============================================
+// CAUSE SECTION
+// ============================================
+
 .cause {
 	flex-direction: column;
 }
 
 .cause_header {
-	padding: 3rem;
+	padding: $spacing-lg;
 }
 
 .cause_container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 	gap: 30px;
 	flex-wrap: wrap;
-	width: 90%;
+	width: $container-width;
 }
 
 .cause_row {
 	position: relative;
 	width: 23em;
-	border-radius: 20px;
-	transition: 0.3s all;
+	border-radius: $radius-sm;
+	transition: $transition-base;
 
 	&:hover {
-		box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+		box-shadow: $shadow-base;
 	}
 }
 
@@ -586,34 +676,34 @@ h2 {
 	img {
 		width: 100%;
 		height: 100%;
-		border-top-right-radius: 20px;
-		border-top-left-radius: 20px;
+		border-top-right-radius: $radius-sm;
+		border-top-left-radius: $radius-sm;
 	}
 }
 
 .cause_row_content {
-	padding: 1rem;
+	padding: $spacing-sm;
 
 	h3 {
-		font-weight: 600;
+		font-weight: $font-semibold;
 		font-size: 1.5rem;
-		color: #5bc0ab;
-		padding-bottom: 1rem;
-		padding-top: 1rem;
+		color: $primary-color;
+		padding-bottom: $spacing-sm;
+		padding-top: $spacing-sm;
 	}
 
 	p {
 		letter-spacing: 1.4px;
 		line-height: 22px;
-		color: #5a6f80;
-		font-weight: 300;
+		color: $secondary-color;
+		font-weight: $font-light;
 	}
 }
 
 .cause_row_progress {
-	background: #aeb6b4;
+	background: $progress-gray;
 	height: 5px;
-	margin-top: 2rem;
+	margin-top: $spacing-md;
 	margin-bottom: 10px;
 	width: 100%;
 }
@@ -621,25 +711,23 @@ h2 {
 .progres {
 	width: 50%;
 	height: 5px;
-	background: #5a6f80;
+	background: $secondary-color;
 }
 
 .progresss {
 	width: 100%;
 	height: 5px;
-	background: #5a6f80;
+	background: $secondary-color;
 }
 
 .progress {
 	width: 70%;
 	height: 5px;
-	background: #5a6f80;
+	background: $secondary-color;
 }
 
 .cause_row_pricing {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	@include flex-between;
 	flex-wrap: wrap;
 	flex-direction: row;
 }
@@ -650,55 +738,58 @@ h2 {
 	align-items: center;
 
 	b {
-		font-weight: 900;
+		font-weight: $font-black;
 		margin-right: 5px;
-		color: #5a6f80;
+		color: $secondary-color;
 	}
 }
 
 .cause_btn {
-	border-bottom-left-radius: 20px;
-	border-bottom-right-radius: 20px;
-	background-color: #5a6f80;
-	color: white;
-	font-weight: 300;
+	border-bottom-left-radius: $radius-sm;
+	border-bottom-right-radius: $radius-sm;
+	background-color: $secondary-color;
+	color: $white;
+	font-weight: $font-light;
 	width: 100%;
 	border: none;
 	font-size: 1.5rem;
 	padding: 10px 20px;
-	margin-top: 1rem;
+	margin-top: $spacing-sm;
 	cursor: pointer;
-	transition: 0.3s all;
+	transition: $transition-base;
 
 	&:hover {
-		background-color: #5bc1ac;
-		color: white;
+		background-color: $primary-color;
+		color: $white;
 	}
 }
 
-// Volunteer Section
+// ============================================
+// VOLUNTEER SECTION
+// ============================================
+
 .volunteer {
-	background: #5a7081;
+	background: $text-dark;
 }
 
 .volunteer-header {
 	h2 {
-		color: white;
+		color: $white;
 		letter-spacing: 1px;
-		font-weight: 500;
-		padding-bottom: 1rem;
+		font-weight: $font-medium;
+		padding-bottom: $spacing-sm;
 		font-size: 3.5rem;
 	}
 }
 
 .volunteer-main {
-	background: white;
-	padding: 2rem;
-	border-radius: 20px;
+	background: $white;
+	padding: $spacing-md;
+	border-radius: $radius-sm;
 
 	h3 {
 		font-size: 1.7rem;
-		padding-bottom: 2rem;
+		padding-bottom: $spacing-md;
 	}
 }
 
@@ -707,46 +798,42 @@ h2 {
 .subject,
 .file,
 .comment {
-	background-color: #f0f8ff;
+	background-color: $light-blue-bg;
 	box-shadow: none;
 	border: 0;
-	color: #717275;
+	color: $input-gray;
 	padding-top: 13px;
 	padding-bottom: 13px;
 	outline: none;
-	font-size: 18px;
+	font-size: $font-size-md;
 	padding-left: 10px;
 }
 
 .form-list {
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	@include flex-between;
 	gap: 30px;
 	flex-wrap: wrap;
 }
 
 .volunteer-btn {
-	background: #5a6f80;
+	background: $secondary-color;
 	padding: 10px 20px;
 	width: 100%;
-	color: white;
-	font-size: 18px;
+	color: $white;
+	font-size: $font-size-md;
 	border: none;
-	border-radius: 20px;
+	border-radius: $radius-sm;
 	cursor: pointer;
-	transition: 0.3s all;
+	transition: $transition-base;
 	margin-top: 15px;
 
 	&:hover {
-		background: #5bc0ab;
+		background: $primary-color;
 	}
 }
 
 .list-img {
-	border-radius: 50%;
-	height: 350px;
-	width: 350px;
+	@include circle(350px);
 
 	img {
 		height: 100%;
@@ -757,9 +844,7 @@ h2 {
 }
 
 .volunteer-row {
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	@include flex-center;
 	flex-wrap: wrap;
 	gap: 30px;
 	width: 75em;
@@ -771,17 +856,17 @@ h2 {
 
 .volunteer-about {
 	h3 {
-		color: white;
-		font-size: 30px;
-		font-weight: 500;
+		color: $white;
+		font-size: $font-size-2xl;
+		font-weight: $font-medium;
 		letter-spacing: 1px;
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding-top: $spacing-sm;
+		padding-bottom: $spacing-sm;
 	}
 
 	p {
-		color: white;
-		font-weight: 300;
+		color: $white;
+		font-weight: $font-light;
 		letter-spacing: 1px;
 		line-height: 22px;
 	}
@@ -794,7 +879,10 @@ h2 {
 	justify-content: center;
 }
 
-// Media Queries
+// ============================================
+// MEDIA QUERIES
+// ============================================
+
 @media (max-width: 1025px) {
 	.header-logo {
 		p {
@@ -811,7 +899,7 @@ h2 {
 	}
 
 	.link-container {
-		font-size: 13px;
+		font-size: $font-size-sm;
 		flex-wrap: wrap;
 	}
 
@@ -832,12 +920,12 @@ h2 {
 
 @media (max-width: 810px) {
 	.nav {
-		transition: 0.5s ease;
+		transition: $transition-slow;
 		position: absolute;
 		top: 84px;
 		left: 0;
 		bottom: 0;
-		background: #f1f1f1;
+		background: $light-bg;
 		width: 100%;
 		z-index: -1;
 		height: 0vh;
